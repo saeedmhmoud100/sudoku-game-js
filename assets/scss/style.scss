@@ -1,5 +1,68 @@
+@use "variables" as v;
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+
+.board{
+  display: grid;
+  grid-template-rows: 50px repeat(3, 25%);
+  grid-template-columns: repeat(3, calc(100% / 3 ) );
+  align-items: center;
+  justify-items: center;
+  width: v.$small-board-width;
+  height: v.$small-board-height;
+
+  margin: 50px auto;
+  background-color: #ccc;
+
+
+  >.selections-container{
+    grid-column: 1 / 4;
+    grid-row: 1/2;
+    height: 100%;
+    width: 100%;
+
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-items: center;
+    text-align: center;
+    > span{
+      cursor: grab;
+      min-width: 20%;
+      &::selection{
+        background-color: transparent;
+      }
+    }
+
+  }
+
+
+  > .board-button{
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.5) inset, -1px -1px 1px 1px rgba(0,0,0,0.5) inset;
+    cursor: grab;
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::selection{
+      background-color: transparent;
+    }
+
+  }
+
+}
+
+
+
