@@ -1,5 +1,8 @@
 @use "variables" as v;
 
+@use "BigBoard";
+
+
 *{
   margin: 0;
   padding: 0;
@@ -19,6 +22,7 @@
   margin: 50px auto;
   background-color: #ccc;
 
+  border-radius: 0 0 5px 5px;
 
   >.selections-container{
     grid-column: 1 / 4;

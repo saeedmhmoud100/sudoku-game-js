@@ -1,5 +1,5 @@
-import SmallBoard from './SmallBoard.js';
+import BigBoard from "./BigBoard.js";
 window.onload = function () {
-    const board = new SmallBoard();
+    const board = new BigBoard();
     board.displayBoard("main-board");
 };

@@ -8,8 +8,11 @@ class SmallBoard {
         this.board = new SmallBoardHTML();
     }
 
-    public displayBoard(id="board"): void {
+    public displayBoard(id?:string): HTMLElement {
+        if(id){
         document.getElementById(id)!.appendChild(this.board.get_board());
+        }
+        return this.board.get_board();
 
     }
 }

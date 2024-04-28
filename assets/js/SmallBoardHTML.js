@@ -43,6 +43,8 @@ class SmallBoardHTML {
     constructor() {
         this.buttons_data = new SmallBoardHTMLButtons();
         this.value_holders = new SmallBoardHTMLValueHolders();
+        this.id = SmallBoardHTML.board_id;
+        SmallBoardHTML.board_id++;
     }
     reset_buttons() {
         this.buttons_data = new SmallBoardHTMLButtons();
@@ -54,13 +56,14 @@ class SmallBoardHTML {
         this.reset_buttons();
         this.reset_value_holders();
     }
-    get_board(i = 0) {
+    get_board() {
         const board = document.createElement("div");
         board.classList.add("board");
-        board.id = 'board-' + i.toString();
+        board.id = 'board-' + this.id.toString();
         board.append(this.value_holders.getValueHolders());
         board.append(...this.buttons_data.getButtons());
         return board;
     }
 }
+SmallBoardHTML.board_id = 0;
 export default SmallBoardHTML;
