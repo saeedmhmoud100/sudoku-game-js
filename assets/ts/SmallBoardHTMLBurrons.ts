@@ -71,7 +71,6 @@ class SmallBoardHTMLButtons{
             return false
         }
 
-
         function checkPlaceColumns(val:string, target:HTMLElement) {
 
             let start_num: any = target.getAttribute('data-button-count');
@@ -96,9 +95,18 @@ class SmallBoardHTMLButtons{
             return false
         }
 
+        function checkPlaceCurrBoard(val:string, target:HTMLElement) : boolean{
+            const buttons = document.querySelectorAll(`div[data-board="${(<HTMLElement>target).getAttribute('data-board')}"]`);
+            for (let i = 0; i < buttons.length; i++) {
+                if((<HTMLElement>buttons[i]).innerText === val)
+                    return true;
+            }
+            return false;
+        }
 
 
-        if(checkPlaceRows(ele!.innerText, (<HTMLElement>event.target)) || checkPlaceColumns(ele!.innerText, (<HTMLElement>event.target))){
+
+        if(checkPlaceRows(ele!.innerText, (<HTMLElement>event.target)) || checkPlaceColumns(ele!.innerText, (<HTMLElement>event.target)) || checkPlaceCurrBoard(ele!.innerText, (<HTMLElement>event.target))){
             return;
         }
 

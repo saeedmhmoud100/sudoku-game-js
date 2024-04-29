@@ -71,7 +71,15 @@ class SmallBoardHTMLButtons {
             }
             return false;
         }
-        if (checkPlaceRows(ele.innerText, event.target) || checkPlaceColumns(ele.innerText, event.target)) {
+        function checkPlaceCurrBoard(val, target) {
+            const buttons = document.querySelectorAll(`div[data-board="${target.getAttribute('data-board')}"]`);
+            for (let i = 0; i < buttons.length; i++) {
+                if (buttons[i].innerText === val)
+                    return true;
+            }
+            return false;
+        }
+        if (checkPlaceRows(ele.innerText, event.target) || checkPlaceColumns(ele.innerText, event.target) || checkPlaceCurrBoard(ele.innerText, event.target)) {
             return;
         }
         if (ele.getAttribute('data-board') === event.target.getAttribute('data-board')) {
