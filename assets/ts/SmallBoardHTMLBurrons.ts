@@ -30,10 +30,27 @@ class SmallBoardHTMLButtons{
 
 
 
-
     drop(event: DragEvent): void {
         event.preventDefault();
         const ele = document!.getElementById(event.dataTransfer!.getData("text/plain"));
+
+
+         function  wrongButton(target: HTMLElement): void {
+             var ourAudio = document.createElement('audio'); // Create a audio element using the DOM
+             ourAudio.style.display = "none"; // Hide the audio element
+             ourAudio.src = "/assets/sounds/wrong-sound.mp3"; // Set resource to our URL
+             ourAudio.autoplay = true; // Automatically play sound
+             ourAudio.onended = function() {
+                 ourAudio.remove(); // Remove when played.
+             };
+             document.body.appendChild(ourAudio);
+
+            target.classList.add("wrong")
+            setTimeout(() => {
+                target.classList.remove("wrong")
+            }, 1000);
+        }
+
         function checkPlaceRows(val:string, target:HTMLElement) {
 
             let start_num: any= target.getAttribute('data-button-count');
@@ -62,6 +79,7 @@ class SmallBoardHTMLButtons{
                 for (let j = i; j < i+3; j++) {
                     const search: HTMLElement = <HTMLElement>document.querySelector(`div[data-button-count="${j}"]`);
                     if(search!.innerText === val){
+                        wrongButton(search);
                         return true;
 
                     }
@@ -88,6 +106,7 @@ class SmallBoardHTMLButtons{
                 for (let j = i; j < i+9; j+=3) {
                     const search: HTMLElement = <HTMLElement>document.querySelector(`div[data-button-count="${j}"]`);
                     if(search!.innerText === val){
+                        wrongButton(search);
                         return true;
                     }
                 }
@@ -98,8 +117,11 @@ class SmallBoardHTMLButtons{
         function checkPlaceCurrBoard(val:string, target:HTMLElement) : boolean{
             const buttons = document.querySelectorAll(`div[data-board="${(<HTMLElement>target).getAttribute('data-board')}"]`);
             for (let i = 0; i < buttons.length; i++) {
-                if((<HTMLElement>buttons[i]).innerText === val)
+                if((<HTMLElement>buttons[i]).innerText === val){
+
+                    wrongButton(buttons[i] as HTMLElement);
                     return true;
+                }
             }
             return false;
         }

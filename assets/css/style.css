@@ -61,5 +61,17 @@
 .board > .board-button.drag-over {
   border: 1px dashed red;
 }
+.board > .board-button.wrong {
+  animation: wrong 0.5s forwards alternate infinite;
+}
+
+@keyframes wrong {
+  0% {
+    background-color: white;
+  }
+  100% {
+    background-color: tomato;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */

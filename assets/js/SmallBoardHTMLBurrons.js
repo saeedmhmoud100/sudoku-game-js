@@ -23,6 +23,20 @@ class SmallBoardHTMLButtons {
     drop(event) {
         event.preventDefault();
         const ele = document.getElementById(event.dataTransfer.getData("text/plain"));
+        function wrongButton(target) {
+            var ourAudio = document.createElement('audio'); // Create a audio element using the DOM
+            ourAudio.style.display = "none"; // Hide the audio element
+            ourAudio.src = "/assets/sounds/wrong-sound.mp3"; // Set resource to our URL
+            ourAudio.autoplay = true; // Automatically play sound
+            ourAudio.onended = function () {
+                ourAudio.remove(); // Remove when played.
+            };
+            document.body.appendChild(ourAudio);
+            target.classList.add("wrong");
+            setTimeout(() => {
+                target.classList.remove("wrong");
+            }, 1000);
+        }
         function checkPlaceRows(val, target) {
             let start_num = target.getAttribute('data-button-count');
             let board_num = Math.floor(start_num / 9);
@@ -47,6 +61,7 @@ class SmallBoardHTMLButtons {
                 for (let j = i; j < i + 3; j++) {
                     const search = document.querySelector(`div[data-button-count="${j}"]`);
                     if (search.innerText === val) {
+                        wrongButton(search);
                         return true;
                     }
                 }
@@ -65,6 +80,7 @@ class SmallBoardHTMLButtons {
                 for (let j = i; j < i + 9; j += 3) {
                     const search = document.querySelector(`div[data-button-count="${j}"]`);
                     if (search.innerText === val) {
+                        wrongButton(search);
                         return true;
                     }
                 }
@@ -74,8 +90,10 @@ class SmallBoardHTMLButtons {
         function checkPlaceCurrBoard(val, target) {
             const buttons = document.querySelectorAll(`div[data-board="${target.getAttribute('data-board')}"]`);
             for (let i = 0; i < buttons.length; i++) {
-                if (buttons[i].innerText === val)
+                if (buttons[i].innerText === val) {
+                    wrongButton(buttons[i]);
                     return true;
+                }
             }
             return false;
         }
