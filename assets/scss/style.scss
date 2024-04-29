@@ -63,6 +63,9 @@
     &::selection{
       background-color: transparent;
     }
+    &.drag-over{
+      border: 1px dashed red;
+    }
 
   }
 

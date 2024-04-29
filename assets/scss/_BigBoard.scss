@@ -1,0 +1,11 @@
+@use "variables" as v;
+
+#main-board{
+  display: grid;
+  grid-template-rows: repeat(3, 33%);
+  grid-template-columns: repeat(3, 33%);
+  width: v.$big-board-width + 30px;
+  height: v.$big-board-height+30px;
+
+  margin: 30px auto;
+}

@@ -13,7 +13,6 @@ class BigBoard{
 
     displayBoard(id="board"): void {
         for (let i = 0; i < 9; i++) {
-        console.log(this.board[i].displayBoard())
             document.getElementById(id)!.appendChild(this.board[i].displayBoard());
         }
     }

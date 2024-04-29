@@ -59,5 +59,8 @@
 .board > .board-button::selection {
   background-color: transparent;
 }
+.board > .board-button.drag-over {
+  border: 1px dashed red;
+}
 
 /*# sourceMappingURL=style.css.map */
