@@ -47,14 +47,31 @@ class SmallBoardHTMLButtons {
                 for (let j = i; j < i + 3; j++) {
                     const search = document.querySelector(`div[data-button-count="${j}"]`);
                     if (search.innerText === val) {
-                        console.log("found");
                         return true;
                     }
                 }
             }
             return false;
         }
-        if (checkPlaceRows(ele.innerText, event.target)) {
+        function checkPlaceColumns(val, target) {
+            let start_num = target.getAttribute('data-button-count');
+            let board_num = Math.floor(start_num / 9) % 3;
+            let col_num = start_num;
+            while (+col_num - 9 >= 0) {
+                col_num -= 9;
+            }
+            start_num = +board_num * 9 + col_num % 3;
+            for (let i = +start_num; i < + +start_num + 81; i += 27) {
+                for (let j = i; j < i + 9; j += 3) {
+                    const search = document.querySelector(`div[data-button-count="${j}"]`);
+                    if (search.innerText === val) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        if (checkPlaceRows(ele.innerText, event.target) || checkPlaceColumns(ele.innerText, event.target)) {
             return;
         }
         if (ele.getAttribute('data-board') === event.target.getAttribute('data-board')) {
