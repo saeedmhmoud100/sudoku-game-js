@@ -36,7 +36,9 @@ function checkPlaceRows(val, target, wrong = true) {
         for (let j = i; j < i + 3; j++) {
             const search = document.querySelector(`div[data-button-count="${j}"]`);
             if (search.innerText === val) {
-                wrongButton(search);
+                if (wrong) {
+                    wrongButton(search);
+                }
                 return false;
             }
         }
@@ -55,8 +57,9 @@ function checkPlaceColumns(val, target, wrong = true) {
         for (let j = i; j < i + 9; j += 3) {
             const search = document.querySelector(`div[data-button-count="${j}"]`);
             if (search.innerText === val) {
-                if (wrong)
+                if (wrong) {
                     wrongButton(search);
+                }
                 return false;
             }
         }
@@ -67,8 +70,9 @@ function checkPlaceCurrBoard(val, target, wrong = true) {
     const buttons = document.querySelectorAll(`div[data-board="${target.getAttribute('data-board')}"]`);
     for (let i = 0; i < buttons.length; i++) {
         if (buttons[i].innerText === val) {
-            if (wrong)
+            if (wrong) {
                 wrongButton(buttons[i]);
+            }
             return false;
         }
     }

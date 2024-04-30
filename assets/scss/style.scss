@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+body{
+  background: url("../images/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
 
 .board{
   display: grid;
@@ -19,7 +23,7 @@
   width: v.$small-board-width;
   height: v.$small-board-height;
 
-  margin: 50px auto;
+  margin: 0 auto;
   background-color: #ccc;
 
   border-radius: 0 0 5px 5px;

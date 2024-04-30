@@ -43,7 +43,9 @@ function checkPlaceRows(val:string, target:HTMLElement,wrong:boolean = true) : b
         for (let j = i; j < i+3; j++) {
             const search: HTMLElement = <HTMLElement>document.querySelector(`div[data-button-count="${j}"]`);
             if(search!.innerText === val){
-                wrongButton(search);
+                if(wrong){
+                    wrongButton(search as HTMLElement);
+                }
                 return false;
 
             }
@@ -70,8 +72,9 @@ function checkPlaceColumns(val:string, target:HTMLElement,wrong:boolean = true) 
         for (let j = i; j < i+9; j+=3) {
             const search: HTMLElement = <HTMLElement>document.querySelector(`div[data-button-count="${j}"]`);
             if(search!.innerText === val){
-                if (wrong)
-                    wrongButton(search);
+                if(wrong){
+                    wrongButton(search as HTMLElement);
+                }
                 return false;
             }
         }
@@ -83,8 +86,9 @@ function checkPlaceCurrBoard(val:string, target:HTMLElement,wrong:boolean = true
     const buttons = document.querySelectorAll(`div[data-board="${(<HTMLElement>target).getAttribute('data-board')}"]`);
     for (let i = 0; i < buttons.length; i++) {
         if((<HTMLElement>buttons[i]).innerText === val){
-            if(wrong)
+            if(wrong){
                 wrongButton(buttons[i] as HTMLElement);
+            }
             return false;
         }
     }
