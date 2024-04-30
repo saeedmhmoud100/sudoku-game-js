@@ -2,7 +2,7 @@ import SmallBoardHTML from "./SmallBoardHTML.js";
 
 
 class SmallBoard {
-    private board :SmallBoardHTML;
+    public board :SmallBoardHTML;
 
     constructor() {
         this.board = new SmallBoardHTML();
@@ -15,6 +15,7 @@ class SmallBoard {
         return this.board.get_board();
 
     }
+
 }
 
 export default SmallBoard;

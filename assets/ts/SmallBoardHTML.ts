@@ -1,4 +1,4 @@
-import SmallBoardHTMLButtons from "./SmallBoardHTMLBurrons.js";
+import SmallBoardHTMLButtons from "./SmallBoardHTMLButtons.js";
 import SmallBoardHTMLValueHolders from "./SmallBoardHTMLValueHolders.js";
 
 class SmallBoardHTML {

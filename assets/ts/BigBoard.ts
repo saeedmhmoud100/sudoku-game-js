@@ -9,6 +9,8 @@ class BigBoard{
         for (let i = 0; i < 9; i++) {
             this.board.push(new SmallBoard());
         }
+
+
     }
 
     displayBoard(id="board"): void {
