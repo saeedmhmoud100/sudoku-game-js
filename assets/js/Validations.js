@@ -1,7 +1,7 @@
 function wrongButton(target) {
     var ourAudio = document.createElement('audio'); // Create a audio element using the DOM
     ourAudio.style.display = "none"; // Hide the audio element
-    ourAudio.src = "/assets/sounds/wrong-sound.mp3"; // Set resource to our URL
+    ourAudio.src = "assets/sounds/wrong-sound.mp3"; // Set resource to our URL
     ourAudio.autoplay = true; // Automatically play sound
     ourAudio.onended = function () {
         ourAudio.remove(); // Remove when played.
